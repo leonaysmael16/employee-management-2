@@ -12,3 +12,14 @@ const connection = mysql.createConnection({
     password: 'password',
     database: 'employeetrack_db'
 });
+
+function connected () {
+    console.log('Welcome to the Employee Database')
+    promptStart();
+};
+
+function promptStart () {
+    console.log('Welcome to the Employee Management System');
+};
+
+function 
