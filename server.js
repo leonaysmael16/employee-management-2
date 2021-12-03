@@ -18,8 +18,15 @@ function connected () {
     promptStart();
 };
 
-function promptStart () {
-    console.log('Welcome to the Employee Management System');
-};
+const promptStart = () => {
+    console.log('Please Select from the options below');
+    inquirer.prompt ([
+        {
+            name: 'choices',
+            type: 'list',
+            Message: 'How can we help you today?',
+            
+        }
+    ])
+}
 
-function 
