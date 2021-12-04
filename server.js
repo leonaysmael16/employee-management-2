@@ -25,7 +25,7 @@ const promptStart = () => {
             name: 'choices',
             type: 'list',
             Message: 'How can we help you today?',
-            
+            choices: ['']
         }
     ])
 }
