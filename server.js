@@ -39,8 +39,8 @@ const promptStart = () => {
                 viewEmployeeRole();
                 break;
                 
-            case "View Employees by Department":
-                viewEmployeeDept();
+            case "View Department":
+                viewDept();
 
             case "Add a Employee":
                 addEmployee();
@@ -86,7 +86,7 @@ function viewEmployees () {
 // View all roles function 
 
 function viewEmployeeRole () {
-    let query = "SELECT * FROM department"
+    let query = "SELECT * FROM role"
     connection.query(query, function (res, err) {
         console.log(res);
         promptStart();
@@ -94,3 +94,8 @@ function viewEmployeeRole () {
 }
 
 
+// view department function
+
+function viewEmployeeDept () {
+
+}
