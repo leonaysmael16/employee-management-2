@@ -25,8 +25,10 @@ const promptStart = () => {
             name: 'choices',
             type: 'list',
             Message: 'How can we help you today?',
-            choices: ['']
+            choices: ['Add Role', 'Add Employee', 'Add Department', 'View Employee',
+        'View Department', 'View Role'
+     ]
         }
-    ])
-}
+    ]);
+};
 
