@@ -1,4 +1,4 @@
-const { allowedNodeEnvironmentFlags } = require("process");
+
 
 const mysql = ('mysql2');
 const inquirer = ('inquirer');
@@ -18,7 +18,7 @@ function connected () {
     promptStart();
 };
 // Prompt Function
-const promptStart = () => 
+const promptStart = () => {
     inquirer.prompt ({
             name: 'choices',
             type: 'list',
@@ -91,4 +91,10 @@ const promptStart = () =>
 
         }
     });
+}
 
+// view all employees functions
+
+function viewEmployees () {
+    let query = "SELECT employee.id, employee.first_name, employee.last_name, title.role, department.dept_name, AS departpemt"
+}
