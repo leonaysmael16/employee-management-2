@@ -1,3 +1,5 @@
+const { allowedNodeEnvironmentFlags } = require("process");
+
 const mysql = ('mysql2');
 const inquirer = ('inquirer');
 const cTable = ('console.table');
@@ -23,7 +25,7 @@ const promptStart = () =>
             Message: 'How can we help you today?',
             choices: ['View All Employees', 'View Employees by Role', 'View Employees by department','View Employees by Manager',
             'Add a Employee','Add a Role','Add Department','Update Role','Update Manager','Delete Employee',
-            'Delete Role', 'Delete Department', 'view department budget', 'exit'
+            'Delete Role', 'Delete Department', 'view department budget', 
      ]
         
     }).then((choices) => {
@@ -37,6 +39,56 @@ const promptStart = () =>
                 viewEmployeeRole();
                 break;
                 
-            case "View Employees"    
+            case "View Employees by Department":
+                viewEmployeeDept();
+
+            case "View Employees by Manager":
+                viewEmployeeManager();
+                break;
+                
+            case "Add a Employee":
+                addEmployee();
+                break;
+                
+            case "Add a Role":
+                addRole();
+                break;
+                
+            case "Add a Employee":
+                addEmployee();
+                break;
+            
+            case "Add Department":
+                addDept();
+                break;
+                
+            case "Update Role":
+                updateRole();
+                break;
+                
+            case "Update Manager":
+                updateManager();
+                break;
+
+            case "Delete Employee":
+                deleteEmployee();
+                break;
+                
+            case "Delete Role":
+                deleteRole();
+                break;
+                
+            case "Delete Department":
+                deleteDept();
+                break;
+                
+            case "view department budget":
+                deptBudget();
+                
+                
+
+
+
         }
-    })
+    });
+
