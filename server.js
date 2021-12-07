@@ -42,10 +42,6 @@ const promptStart = () => {
             case "View Employees by Department":
                 viewEmployeeDept();
 
-            case "View Employees by Manager":
-                viewEmployeeManager();
-                break;
-                
             case "Add a Employee":
                 addEmployee();
                 break;
@@ -66,22 +62,6 @@ const promptStart = () => {
                 updateRole();
                 break;
                 
-            case "Update Manager":
-                updateManager();
-                break;
-
-            case "Delete Employee":
-                deleteEmployee();
-                break;
-                
-            case "Delete Role":
-                deleteRole();
-                break;
-                
-            case "Delete Department":
-                deleteDept();
-                break;
-                
             case "view department budget":
                 deptBudget();
                 
@@ -96,5 +76,21 @@ const promptStart = () => {
 // view all employees functions
 
 function viewEmployees () {
-    let query = "SELECT employee.id, employee.first_name, employee.last_name, title.role, department.dept_name, AS departpemt"
+    let query = "SELECT employee.id, employee.first_name, employee.last_name, title.role, department.dept_name AS department, salary.role FROM employee LEFT JOIN role ON employee.id_role = JOIN department on role.dept_id = dept.id"
+    connection.query(query, function (res, err) {
+        console.log(res);
+        promptStart();
+    });
 }
+
+// View all roles function 
+
+function viewEmployeeRole () {
+    let query = "SELECT * FROM department"
+    connection.query(query, function (res, err) {
+        console.log(res);
+        promptStart();
+    });
+}
+
+
