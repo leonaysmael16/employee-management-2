@@ -1,6 +1,6 @@
 
 
-const mysql = require('mysql2');
+const mysql = require('mysql');
 const inquirer = require('inquirer');
 const cTable = require('console.table');
 const PORT = process.env.PORT || 3001;
@@ -12,7 +12,7 @@ const connection = mysql.createConnection (
     {
         host: 'localhost',
         user: 'root',
-        password: ,
+        password: 'password16',
         database: 'employeetrack_db'
     },
     console.log('Connected to Employee Tracker')
