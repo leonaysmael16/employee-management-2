@@ -1,22 +1,22 @@
 
 
-const mysql = ('mysql2');
-const inquirer = ('inquirer');
-const cTable = ('console.table');
+const mysql = require('mysql2');
+const inquirer = require('inquirer');
+const cTable = require('console.table');
+const PORT = process.env.PORT || 3001;
+
 
 // creates connection to database
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'employeetrack_db'
-});
-
-function connected () {
-    console.log('Welcome to the Employee Database')
-    promptStart();
-};
+const connection = mysql.createConnection (
+    {
+        host: 'localhost',
+        user: 'root',
+        password:'',
+        database: 'employeetrack_db'
+    },
+    console.log('Connected to Employee Tracker')
+);
 // Prompt Function
 const promptStart = () => {
     inquirer.prompt ({
@@ -125,7 +125,8 @@ function addRole() {
             name: "deptNumber"
         }
     ]).then(function(choice) {
-        connection.query("INSERT INTO role (Title, Salary, department_number) VALUES (?,?,?)", [choice.titleRole, choice.roleSalary, choice.deptNumber], function (res, err) {
+        let query = "INSERT INTO role (Title, Salary, department_number) VALUES (?,?,?)";
+        connection.query(query, [choice.titleRole, choice.roleSalary, choice.deptNumber], function (res, err) {
             console.log(res);
             promptStart();
         });
@@ -141,7 +142,8 @@ function addDept() {
         message: "What's the department name?",
         name: "nameDept"
     }).then(function (choice) {
-        connection.query("INSERT INTO department (name) VALUES (?)", [choice.nameDept], function(res, err) {
+        let query = "INSERT INTO department (name) VALUES (?)";
+        connection.query(query, [choice.nameDept], function(res, err) {
             console.log(res);
             promptStart();
         });
@@ -149,3 +151,24 @@ function addDept() {
 }
 
 // update role function
+
+// function updateRole() {
+//     inquirer
+//     .prompt([
+//         {
+//             type: "input",
+//             message: "Please select an employee to update",
+//             name: "employeeUpdate"
+//         },
+//         {
+//             type: "input",
+//             message: "Please update role for employee",
+//             name: "roleUpdate"
+//         }
+//     ])
+//     .then(function (choice) {
+//         connection.query("SELECT * FROM ROLE")
+//     })
+// }
+
+promptStart();
