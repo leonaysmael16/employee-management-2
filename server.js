@@ -35,7 +35,7 @@ const promptStart = () => {
                 viewEmployees();
                 break;
 
-            case "View Employees by Role":
+            case "ViewRole":
                 viewEmployeeRole();
                 break;
                 
@@ -86,7 +86,7 @@ function viewEmployees () {
 // View all roles function 
 
 function viewEmployeeRole () {
-    let query = "SELECT * FROM role"
+    let query = "SELECT * FROM role";
     connection.query(query, function (res, err) {
         console.log(res);
         promptStart();
@@ -97,5 +97,55 @@ function viewEmployeeRole () {
 // view department function
 
 function viewEmployeeDept () {
-
+    let query = "SELECT * FROM department";
+    connection.query(query, function(res, err) {
+        console.log(res);
+        promptStart();
+         
+         });
 }
+
+// add role function
+
+function addRole() {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What's the title of the role?",
+            name: "titleRole"
+        },
+        {
+            type: "input",
+            message: "What is the total salary for the role?",
+            name: "roleSalary"
+        },
+        {
+            type: "input",
+            message: "Insert ID number",
+            name: "deptNumber"
+        }
+    ]).then(function(choice) {
+        connection.query("INSERT INTO role (Title, Salary, department_number) VALUES (?,?,?)", [choice.titleRole, choice.roleSalary, choice.deptNumber], function (res, err) {
+            console.log(res);
+            promptStart();
+        });
+    });
+}
+
+// add department function
+
+function addDept() {
+    inquirer
+    .prompt({
+        type: "input",
+        message: "What's the department name?",
+        name: "nameDept"
+    }).then(function (choice) {
+        connection.query("INSERT INTO department (name) VALUES (?)", [choice.nameDept], function(res, err) {
+            console.log(res);
+            promptStart();
+        });
+    });
+}
+
+// update role function
