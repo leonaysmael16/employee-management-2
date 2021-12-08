@@ -4,8 +4,10 @@ CREATE DATABASE employeetrack_db;
 
 USE employeetrack_db;
 
+CREATE TABLE department (
+    title VARCHAR (30)
+);
+
 CREATE TABLE role (
-    id INT NOT NULL auto_increment,
-    title VARCHAR (30) NOT NULL,
-    salary 
+    title VARCHAR (30), id INT NOT NULL auto_increment PRIMARY KEY
 )
