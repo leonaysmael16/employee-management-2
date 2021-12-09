@@ -75,7 +75,7 @@ const promptStart = () => {
 
 // view all employees functions
 
-function viewEmployees () {
+const viewEmployees = () => {
     let query = "SELECT employee.id, employee.first_name, employee.last_name, title.role, department.dept_name AS department, salary.role FROM employee LEFT JOIN role ON employee.id_role = JOIN department on role.dept_id = dept.id"
     connection.query(query, function (res, err) {
         console.log(res);
@@ -85,7 +85,7 @@ function viewEmployees () {
 
 // View all roles function 
 
-function viewEmployeeRole () {
+const ViewRole = () => {
     let query = "SELECT * FROM role";
     connection.query(query, function (res, err) {
         console.log(res);
@@ -96,7 +96,7 @@ function viewEmployeeRole () {
 
 // view department function
 
-function viewEmployeeDept () {
+const viewDept = () => {
     let query = "SELECT * FROM department";
     connection.query(query, function(res, err) {
         console.log(res);
@@ -107,7 +107,7 @@ function viewEmployeeDept () {
 
 // add role function
 
-function addRole() {
+const addRole = () => {
     inquirer.prompt([
         {
             type: "input",
@@ -135,7 +135,7 @@ function addRole() {
 
 // add department function
 
-function addDept() {
+const addDept = () => {
     inquirer
     .prompt({
         type: "input",
